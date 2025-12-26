@@ -1,10 +1,29 @@
-<!DECTYPE html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <tiitle>Web Coba</tiitle>
-  </head>
-  <body>
-    <h1>Header</h1>
-    <p>Isi</p>
-  </body>
+<head>
+    <title>Dashboard Produktivitas</title>
+</head>
+<body>
+
+<h1>Data Produksi</h1>
+<table border="1" id="tabel"></table>
+
+<script>
+fetch("PASTE_LINK_CSV_DI_SINI")
+  .then(res => res.text())
+  .then(data => {
+    let rows = data.split("\n");
+    let html = "";
+    rows.forEach(row => {
+      html += "<tr>";
+      row.split(",").forEach(col => {
+        html += "<td>" + col + "</td>";
+      });
+      html += "</tr>";
+    });
+    document.getElementById("tabel").innerHTML = html;
+  });
+</script>
+
+</body>
 </html>
